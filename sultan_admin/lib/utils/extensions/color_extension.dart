@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:sultan_admin/shared/theme/colors.dart';
+
 extension ColorExtension on BuildContext {
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 

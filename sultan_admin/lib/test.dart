@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sultan_admin/utils/extensions/text.dart';
-import 'package:sultan_admin/utils/theme_extensions.dart';
+import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
@@ -12,6 +11,6 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
-    return Text('test', style: context.h2);
+    return Text('test', style: context.h1);
   }
 }
