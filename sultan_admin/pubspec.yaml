@@ -67,6 +67,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.1
   cached_network_image: ^3.4.1
   beamer: ^1.7.0
+  riverpod_lint: ^3.0.3
 
 dev_dependencies:
   flutter_test:
