@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_setup_project/test.dart';
+import 'package:sultan_admin/test.dart';
 
 void main() {
   runApp(const MyApp());
