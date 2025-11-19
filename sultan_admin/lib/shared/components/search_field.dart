@@ -23,15 +23,25 @@ class SearchField extends StatelessWidget {
     return ReusableTextField(
       controller: controller,
       hint: hint,
+      onChanged: onChanged,
+      // Real style mapping (adaptive using extensions)
+      borderRadius: 8.0,
+      contentPadding: EdgeInsets.all(8.r),
+      borderColor: context.c_textSecondary, // "1px solid secondary text color"
+      fillColor: context.c_surface, // "surface color"
+      hintColor: context.c_textSecondary, // placeholder color
+      textColor: context.c_textPrimary, // primary text color
       prefix: Padding(
         padding: EdgeInsets.only(left: 8.w, right: 4.w),
-        child: Icon(Icons.search, color: context.c_textSecondary),
+        child: Icon(Icons.search, color: context.c_textSecondary, size: 20.r),
       ),
-      suffix: IconButton(
-        icon: Icon(Icons.close, color: context.c_textSecondary),
-        onPressed: onClear,
-      ),
-      onChanged: onChanged,
+      suffix: (controller != null || onClear != null)
+          ? IconButton(
+              icon: Icon(Icons.close, color: context.c_textSecondary, size: 20.r),
+              onPressed: onClear,
+              splashRadius: 18.r,
+            )
+          : null,
     );
   }
 }
