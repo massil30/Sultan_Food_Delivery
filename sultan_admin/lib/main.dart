@@ -20,7 +20,7 @@ class MyApp extends ConsumerWidget {
       title: "Theme Switch",
       theme: appLightTheme,
       darkTheme: appDarkTheme,
-      themeMode: themeMode,
+      themeMode: themeMode.value ?? ThemeMode.light,
       home: const TestPage(),
     );
   }
