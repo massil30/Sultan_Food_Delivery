@@ -58,7 +58,6 @@ dependencies:
   fluttertoast: ^8.2.8
   
   # State Management
-  flutter_bloc: ^8.1.6
   path_provider: ^2.1.4
   equatable: ^2.0.5
   
