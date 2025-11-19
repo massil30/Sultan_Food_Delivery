@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sultan_admin/shared/theme/dark_theme.dart';
 import 'package:sultan_admin/shared/theme/light_theme.dart';
 import 'package:sultan_admin/shared/theme/theme.dart';
 import 'package:sultan_admin/test.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(ProviderScope(child: ScreenUtilInit(
+     designSize: const Size(390, 844), // Your design Figma size
+      minTextAdapt: true,child: const MyApp())));
 }
 
 class MyApp extends ConsumerWidget {
