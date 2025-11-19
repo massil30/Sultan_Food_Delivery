@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// App Colors - Simplified color palette for light and dark themes
+/// App Colors - Centralized color palette
 class AppColors {
   // ==================== LIGHT THEME ====================
   static const Color lightBackground = Color(0xFFFBFBFE);
