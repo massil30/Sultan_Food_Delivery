@@ -10,6 +10,8 @@ class ThemeNotifier extends Notifier<ThemeMode> {
   }
 }
 
+
+// Provider to access ThemeNotifier
 final themeProvider = NotifierProvider<ThemeNotifier, ThemeMode>(() {
   return ThemeNotifier();
 });
