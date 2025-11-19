@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String kThemeModeKey = "theme_mode";
 
 class UserTheme {
   Future<ThemeMode> loadTheme() async {
-    final prefs = await SharedPreferences.getInstance();
+  final SharedPreferences prefs = GetIt.I<SharedPreferences>();
     final value = prefs.getString(kThemeModeKey);
 
     switch (value) {
