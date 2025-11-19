@@ -1,40 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-class ThemeCubit extends Cubit<ThemeData> {
-  ThemeCubit() : super(_lightTheme);
-
-  static final _lightTheme = ThemeData(
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: const Color(0xFFFBFBFE),
-    colorScheme: const ColorScheme.light(
-      primary: Colors.blue,
-      secondary: Color(0xFFE3F2FD),
-    ),
-    textTheme: GoogleFonts.leagueSpartanTextTheme(), // Apply font
-  );
-
-  static final _darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: const Color(0xFF121212), // dark background
-    colorScheme: const ColorScheme.dark(
-      primary: Colors.blue, // primary color stays
-      secondary: Color(0xFF1565C0), // darker accent for dark mode
-    ),
-    textTheme: GoogleFonts.leagueSpartanTextTheme(ThemeData.dark().textTheme),
-  );
-
-  void toggleTheme() {
-    emit(state.brightness == Brightness.light ? _darkTheme : _lightTheme);
-  }
-}
-
-
-
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+
+
 
 class AppThemes {
   // Base colors
@@ -115,9 +85,9 @@ class AppThemes {
     appBarTheme: AppBarTheme(
       backgroundColor: backgroundLight,
       foregroundColor: Colors.black87,
-      elevation: 2,
+      elevation: 2,A
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceLight,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
@@ -177,7 +147,7 @@ class AppThemes {
       foregroundColor: Colors.white,
       elevation: 2,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: surfaceDark,
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
