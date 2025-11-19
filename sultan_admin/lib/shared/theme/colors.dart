@@ -44,8 +44,5 @@ class AppColors {
   static const Color info = Color(0xFF2196F3);                    // blue info
   static const Color error = Color(0xFFD93900);                   // global error
 
-  // ==================== NEUTRAL COLORS ====================
-  static const Color white = Color(0xFFFFFFFF);
-  static const Color black = Color(0xFF000000);
-  static const Color transparent = Colors.transparent;
+ 
 }
