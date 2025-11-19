@@ -20,43 +20,43 @@ final ThemeData appDarkTheme = ThemeData(
   ),
   scaffoldBackgroundColor: AppColors.darkBackground,
   textTheme: TextTheme(
-    displayLarge: GoogleFonts.inter(
+    displayLarge: GoogleFonts.lato(
       fontSize: 36.sp,
       fontWeight: FontWeight.bold,
       color: Colors.white,
       height: 1.2,
     ),
-    headlineLarge: GoogleFonts.inter(
+    headlineLarge: GoogleFonts.lato(
       fontSize: 28.sp,
       fontWeight: FontWeight.w700,
       color: Colors.white,
       height: 1.2,
     ),
-    headlineMedium: GoogleFonts.inter(
+    headlineMedium: GoogleFonts.lato(
       fontSize: 24.sp,
       fontWeight: FontWeight.w500,
       color: Colors.white,
       height: 1.2,
     ),
-    bodyLarge: GoogleFonts.inter(
+    bodyLarge: GoogleFonts.lato(
       fontSize: 18.sp,
       fontWeight: FontWeight.w400,
       color: Colors.white,
       height: 1.5,
     ),
-    bodyMedium: GoogleFonts.inter(
+    bodyMedium: GoogleFonts.lato(
       fontSize: 16.sp,
       fontWeight: FontWeight.w400,
       color: Colors.white70,
       height: 1.5,
     ),
-    bodySmall: GoogleFonts.inter(
+    bodySmall: GoogleFonts.lato(
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: Colors.white38,
       height: 1.4,
     ),
-    labelSmall: GoogleFonts.inter(
+    labelSmall: GoogleFonts.lato(
       fontSize: 12.sp,
       fontWeight: FontWeight.w500,
       color: Colors.white,
@@ -90,7 +90,7 @@ final ThemeData appDarkTheme = ThemeData(
       borderSide: BorderSide(color: Colors.white38),
       borderRadius: BorderRadius.circular(8.r),
     ),
-    hintStyle: GoogleFonts.inter(
+    hintStyle: GoogleFonts.lato(
       color: Colors.white70,
       fontStyle: FontStyle.italic,
       fontSize: 16.sp,

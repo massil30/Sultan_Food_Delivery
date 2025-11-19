@@ -1,0 +1,42 @@
+{
+  "components": {
+    "buttons": {
+      "shape": "Rounded, 8px radius",
+      "border": "None for primary, 1px for outlined",
+      "shadow": "Default elevation for raised buttons",
+      "states": {
+        "hover": "color darkens",
+        "active": "border thicker/shadow increases",
+        "disabled": "opacity reduced to 40%"
+      }
+    },
+    "inputs": {
+      "focus": "border-primary-color, subtle shadow",
+      "error": "border-error-color, helper text",
+      "placeholder": "secondary text color",
+      "disabled": "background disabled color, text faded"
+    },
+    "cards": {
+      "radius": "8px",
+      "shadow": "Light elevation",
+      "padding": "16px inside, 24px outside"
+    },
+    "lists": {
+      "type": "Flat list with item dividers, spaced by 8px",
+      "selectable": "highlight on hover/tap"
+    },
+    "tables": {
+      "usage": "Rare, for admin/analytics",
+      "padding": "8px per row"
+    },
+    "tabs": {
+      "shape": "Rounded tabs",
+      "active": "Highlight for active tab"
+    },
+    "chips": {
+      "shape": "Capsule",
+      "spacing": "4px gap"
+    },
+    "toggles": {
+      "switches": "8px height",
+      "color
