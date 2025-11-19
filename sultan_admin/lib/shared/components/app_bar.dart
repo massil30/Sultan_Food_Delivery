@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -18,15 +19,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         title,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 24.sp,
-          //      color: context.primary,
-        ),
+        style:context.h1,
       ),
       backgroundColor: backgroundcolor,
       leading: Container(
-        margin: const EdgeInsets.only(left: 24),
+        margin:  EdgeInsets.only(left: 24.w),
         child: Navigator.canPop(context)
             ? IconButton(
                 icon: Icon(

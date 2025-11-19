@@ -50,9 +50,9 @@ class ReusableTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final fill = (fillColor ?? (enabled ? context.c_surface : context.c_disabled));
     final bColor = borderColor ?? context.c_border;
-    final hColor = hintColor ?? context.c_textSecondary;
-    final tColor = textColor ?? context.c_textPrimary;
-    final padding = contentPadding ?? EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h);
+    final hColor = hintColor ?? context.c_secondary;
+    final tColor = textColor ?? context.c_primary;
+    final padding = contentPadding ?? context.psh16;
 
     return TextFormField(
       controller: controller,

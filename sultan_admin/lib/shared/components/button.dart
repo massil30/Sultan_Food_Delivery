@@ -31,8 +31,8 @@ class AppButton extends StatelessWidget {
     final enabled = onPressed != null && !loading;
     final child = loading
         ? SizedBox(
-            width: 18,
-            height: 18,
+            width: 18.w,
+            height: 18.h,
             child: CircularProgressIndicator(
               strokeWidth: 2.0,
               valueColor: AlwaysStoppedAnimation(context.c_primary.computeLuminance() > 0.5 ? Colors.black : Colors.white),
@@ -43,7 +43,7 @@ class AppButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[icon!, SizedBox(width: context.s8)],
-              Text(label, style: context.button),
+              Text(label, style: context.button?.copyWith(color: Colors.white)),
             ],
           );
 
