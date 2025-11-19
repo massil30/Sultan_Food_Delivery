@@ -2,24 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:sultan_admin/shared/theme/colors.dart';
 
 extension ColorExtension on BuildContext {
-  ColorScheme get colorScheme => Theme.of(this).colorScheme;
+  // =========================
+  // MAIN BRAND COLORS
+  // =========================
+  Color get c_primary   => AppColors.lightPrimary;
+  Color get c_secondary => AppColors.lightSecondary;
+  Color get c_accent    => AppColors.lightAccent;
 
-  // Main colors
-  Color get primary => colorScheme.primary;
-  Color get secondary => colorScheme.secondary;
-  Color get surface => colorScheme.surface;
-  Color get error => colorScheme.error;
-  Color get background => Theme.of(this).scaffoldBackgroundColor;
+  // =========================
+  // BACKGROUND / SURFACE
+  // =========================
+  Color get c_background => AppColors.lightBackground;
+  Color get c_surface    => AppColors.lightSurface;
+  Color get c_border     => AppColors.lightBorder;
+  Color get c_disabled   => AppColors.lightDisabled;
+  Color get c_overlay    => AppColors.lightOverlay;
 
-  // Text colors (theme-aware)
+  // =========================
+  // TEXT COLORS
+  // =========================
+  Color get c_textPrimary   => AppColors.lightText;
+  Color get c_textSecondary => AppColors.lightTextMuted;
+  Color get c_textDisabled  => AppColors.lightTextDisabled;
 
-  // Semantic colors
-  Color get success => AppColors.success;
-  Color get warning => AppColors.warning;
-  Color get info => AppColors.info;
+  // =========================
+  // SEMANTIC COLORS
+  // =========================
+  Color get c_success => AppColors.success;
+  Color get c_warning => AppColors.warning;
+  Color get c_info    => AppColors.info;
+  Color get c_error   => AppColors.error;
 
-  // Accent colors
-  Color get accent1 => AppColors.accent1;
-  Color get accent2 => AppColors.accent2;
-  Color get accent3 => AppColors.accent3;
+  // =========================
+  // NEUTRAL COLORS
+  // =========================
+ //  Color get c_white       => AppColors.white;
+ // Color get c_black       => AppColors.black;
+//  Color get c_transparent => AppColors.transparent;
 }
