@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sultan_admin/config/dependencies.dart';
-import 'package:sultan_admin/features/products/presentation/add_product.dart';
+import 'package:sultan_admin/features/products/presentation/views/product_list_view.dart';
 import 'package:sultan_admin/shared/theme/dark_theme.dart';
 import 'package:sultan_admin/shared/theme/light_theme.dart';
 import 'package:sultan_admin/shared/theme/theme.dart';
@@ -35,7 +35,7 @@ class MyApp extends ConsumerWidget {
       theme: appLightTheme,
       darkTheme: appDarkTheme,
       themeMode: themeMode,
-      home: AddProductPage(),
+      home: ProductListView(),
     );
   }
 }
