@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sultan_admin/features/Users/presentation/view_models/user_view_model.dart';
-import 'package:sultan_admin/features/Users/presentation/widgets/user_card.dart';
+import 'package:sultan_admin/features/Users/presentation/views/user_details_view.dart';
 import 'package:sultan_admin/shared/components/app_bar.dart';
 import 'package:sultan_admin/shared/components/search_field.dart';
 import 'package:sultan_admin/utils/extensions/color_extension.dart';
+import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
 class UsersListView extends ConsumerStatefulWidget {
   const UsersListView({super.key});
@@ -14,12 +15,32 @@ class UsersListView extends ConsumerStatefulWidget {
   ConsumerState<UsersListView> createState() => _UsersListViewState();
 }
 
-class _UsersListViewState extends ConsumerState<UsersListView> {
+class _UsersListViewState extends ConsumerState<UsersListView>
+    with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
+  late TabController _tabController;
+
+  final List<String> _tabs = ['Confirmateur', 'Clients', 'Delivery'];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _tabs.length, vsync: this);
+    _tabController.addListener(_handleTabSelection);
+  }
+
+  void _handleTabSelection() {
+    if (_tabController.indexIsChanging) {
+      ref
+          .read(userViewModelProvider.notifier)
+          .setRole(_tabs[_tabController.index]);
+    }
+  }
 
   @override
   void dispose() {
     _searchController.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -45,6 +66,17 @@ class _UsersListViewState extends ConsumerState<UsersListView> {
               },
             ),
           ),
+          TabBar(
+            controller: _tabController,
+            labelColor: context.c_primary,
+            unselectedLabelColor: context.c_secondary,
+            indicatorColor: context.c_primary,
+            tabs: _tabs.map((tab) => Tab(text: tab)).toList(),
+            onTap: (index) {
+              // Handle tap if needed, but listener handles logic
+              ref.read(userViewModelProvider.notifier).setRole(_tabs[index]);
+            },
+          ),
           Expanded(
             child: usersAsync.when(
               data: (users) {
@@ -56,21 +88,47 @@ class _UsersListViewState extends ConsumerState<UsersListView> {
                     ),
                   );
                 }
-                return GridView.builder(
+                return ListView.separated(
                   padding: EdgeInsets.symmetric(
                     horizontal: 16.w,
                     vertical: 8.h,
                   ),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.75,
-                    crossAxisSpacing: 16.w,
-                    mainAxisSpacing: 16.h,
-                  ),
                   itemCount: users.length,
+                  separatorBuilder: (context, index) =>
+                      Divider(color: Colors.grey.withOpacity(0.2)),
                   itemBuilder: (context, index) {
                     final user = users[index];
-                    return UserCard(user: user);
+                    return ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        user.name,
+                        style: context.body?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Text(
+                        user.email,
+                        style: context.body?.copyWith(
+                          color: context.c_secondary,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red, size: 20.r),
+                        onPressed: () {
+                          ref
+                              .read(userViewModelProvider.notifier)
+                              .deleteUser(user.id);
+                        },
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => UserDetailsView(user: user),
+                          ),
+                        );
+                      },
+                    );
                   },
                 );
               },

@@ -11,7 +11,7 @@ class UserService implements UserRepo {
       email: 'john.doe@example.com',
       phoneNumber: '+1234567890',
       imageUrl: 'https://i.pravatar.cc/150?u=1',
-      role: 'Admin',
+      role: 'Confirmateur',
       status: 'Active',
     ),
     User(
@@ -20,7 +20,7 @@ class UserService implements UserRepo {
       email: 'jane.smith@example.com',
       phoneNumber: '+0987654321',
       imageUrl: 'https://i.pravatar.cc/150?u=2',
-      role: 'User',
+      role: 'Client',
       status: 'Active',
     ),
     User(
@@ -29,7 +29,7 @@ class UserService implements UserRepo {
       email: 'alice.johnson@example.com',
       phoneNumber: '+1122334455',
       imageUrl: 'https://i.pravatar.cc/150?u=3',
-      role: 'User',
+      role: 'Delivery',
       status: 'Inactive',
     ),
     User(
@@ -38,7 +38,7 @@ class UserService implements UserRepo {
       email: 'bob.brown@example.com',
       phoneNumber: '+5544332211',
       imageUrl: 'https://i.pravatar.cc/150?u=4',
-      role: 'Manager',
+      role: 'Client',
       status: 'Active',
     ),
   ];

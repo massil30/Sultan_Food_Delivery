@@ -28,7 +28,7 @@ class UserCard extends ConsumerWidget {
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: const Color.fromARGB(255, 195, 195, 195),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),

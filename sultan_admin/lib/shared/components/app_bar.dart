@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sultan_admin/utils/extensions/color_extension.dart';
 import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -17,13 +18,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      title: Text(
-        title,
-        style:context.h1,
-      ),
-      backgroundColor: backgroundcolor,
+      title: Text(title, style: context.h1?.copyWith(color: Colors.white)),
+      backgroundColor: context.c_primary,
       leading: Container(
-        margin:  EdgeInsets.only(left: 24.w),
+        margin: EdgeInsets.only(left: 24.w),
         child: Navigator.canPop(context)
             ? IconButton(
                 icon: Icon(
