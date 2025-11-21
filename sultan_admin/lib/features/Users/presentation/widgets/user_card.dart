@@ -54,7 +54,7 @@ class UserCard extends ConsumerWidget {
                   Text(
                     user.name,
                     style: context.body?.copyWith(
-                      color: context.c_textPrimary,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                     maxLines: 1,
@@ -62,9 +62,7 @@ class UserCard extends ConsumerWidget {
                   ),
                   Text(
                     user.role,
-                    style: context.bodySmall?.copyWith(
-                      color: context.c_secondary,
-                    ),
+                    style: context.body?.copyWith(color: Colors.black),
                   ),
                   SizedBox(height: 8.h),
                   Row(
