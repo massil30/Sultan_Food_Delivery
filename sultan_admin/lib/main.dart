@@ -7,8 +7,6 @@ import 'package:sultan_admin/shared/theme/dark_theme.dart';
 import 'package:sultan_admin/shared/theme/light_theme.dart';
 import 'package:sultan_admin/shared/theme/theme.dart';
 
-import 'package:sultan_admin/test.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();

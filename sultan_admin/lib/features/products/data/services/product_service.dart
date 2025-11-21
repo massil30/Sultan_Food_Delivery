@@ -3,7 +3,26 @@ import 'package:sultan_admin/features/products/data/models/product_model.dart';
 
 class ProductService {
   // Simulating a backend with in-memory storage
-  final List<Product> _products = [];
+  final List<Product> _products = [
+    Product(
+      id: '1',
+      name: 'Burger',
+      description: 'Delicious beef burger',
+      price: 10.0,
+      imageUrl:
+          'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+      category: 'Food',
+    ),
+    Product(
+      id: '2',
+      name: 'Coke',
+      description: 'Cold cola drink',
+      price: 2.5,
+      imageUrl:
+          'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNvY2ElMjBjb2xhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+      category: 'Drink',
+    ),
+  ];
 
   Future<List<Product>> getAll() async {
     // Simulate network delay

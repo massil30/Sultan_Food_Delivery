@@ -5,6 +5,9 @@ import 'package:sultan_admin/features/products/data/services/product_service.dar
 
 class ProductViewModel extends StateNotifier<AsyncValue<List<Product>>> {
   final ProductService _service;
+  List<Product> _allProducts = [];
+  String _searchQuery = '';
+  String? _selectedCategory;
 
   ProductViewModel(this._service) : super(const AsyncValue.loading()) {
     loadProducts();
@@ -13,21 +16,49 @@ class ProductViewModel extends StateNotifier<AsyncValue<List<Product>>> {
   Future<void> loadProducts() async {
     try {
       state = const AsyncValue.loading();
-      final products = await _service.getAll();
-      state = AsyncValue.data(products);
+      _allProducts = await _service.getAll();
+      _applyFilters();
     } catch (e, st) {
       state = AsyncValue.error(e, st);
     }
   }
 
+  void setSearchQuery(String query) {
+    _searchQuery = query;
+    _applyFilters();
+  }
+
+  void setCategory(String? category) {
+    _selectedCategory = category;
+    _applyFilters();
+  }
+
+  void _applyFilters() {
+    var filtered = _allProducts;
+
+    if (_searchQuery.isNotEmpty) {
+      filtered = filtered
+          .where(
+            (p) => p.name.toLowerCase().contains(_searchQuery.toLowerCase()),
+          )
+          .toList();
+    }
+
+    if (_selectedCategory != null && _selectedCategory != 'All') {
+      filtered = filtered
+          .where((p) => p.category == _selectedCategory)
+          .toList();
+    }
+
+    state = AsyncValue.data(filtered);
+  }
+
   Future<void> addProduct(Product product) async {
     try {
       await _service.add(product);
-      // Optimistic update or reload
       await loadProducts();
     } catch (e) {
-      // Handle error (maybe show toast via a side effect provider or callback,
-      // but for now we just reload or keep state)
+      // Handle error
     }
   }
 
