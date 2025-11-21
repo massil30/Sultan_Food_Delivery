@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sultan_admin/features/products/data/models/product_model.dart';
+import 'package:sultan_admin/features/products/data/services/product_repo.dart';
 
-class ProductService {
+class ProductService implements ProductRepo {
   // Simulating a backend with in-memory storage
   final List<Product> _products = [
     Product(
