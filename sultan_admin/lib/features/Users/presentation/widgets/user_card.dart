@@ -62,7 +62,9 @@ class UserCard extends ConsumerWidget {
                   ),
                   Text(
                     user.role,
-                    style: context.small?.copyWith(color: context.c_secondary),
+                    style: context.bodySmall?.copyWith(
+                      color: context.c_secondary,
+                    ),
                   ),
                   SizedBox(height: 8.h),
                   Row(
