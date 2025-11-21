@@ -4,6 +4,8 @@ import 'package:sultan_admin/features/products/data/models/product_model.dart';
 import 'package:sultan_admin/shared/components/app_bar.dart';
 import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
+import 'package:sultan_admin/shared/components/image.dart';
+
 class ProductDetailsView extends StatelessWidget {
   final Product product;
 
@@ -19,18 +21,11 @@ class ProductDetailsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (product.imageUrl.isNotEmpty)
-              Container(
-                height: 200.h,
+              ReusableImage(
+                imageUrl: product.imageUrl,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: Colors.grey[200],
-                  image: DecorationImage(
-                    image: NetworkImage(product.imageUrl),
-                    fit: BoxFit.cover,
-                    onError: (_, __) {},
-                  ),
-                ),
+                height: 200.h,
+                borderRadius: 12.r,
               ),
             SizedBox(height: 20.h),
             Text(product.name, style: context.h1),

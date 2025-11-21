@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sultan_admin/features/products/data/models/product_model.dart';
 import 'package:sultan_admin/features/products/presentation/view_models/product_view_model.dart';
 import 'package:sultan_admin/shared/components/app_bar.dart';
 import 'package:sultan_admin/shared/components/button.dart';
+import 'package:sultan_admin/shared/components/image.dart';
 import 'package:sultan_admin/shared/components/text_field.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,8 +25,9 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
   late TextEditingController _nameController;
   late TextEditingController _descController;
   late TextEditingController _priceController;
-  late TextEditingController _imageController;
   String? _selectedCategory;
+  File? _pickedImage;
+  final ImagePicker _picker = ImagePicker();
 
   final List<String> _categories = ['Food', 'Drink', 'Dessert', 'Other'];
 
@@ -37,9 +41,6 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
     _priceController = TextEditingController(
       text: widget.product?.price.toString() ?? '',
     );
-    _imageController = TextEditingController(
-      text: widget.product?.imageUrl ?? '',
-    );
     _selectedCategory = widget.product?.category;
   }
 
@@ -48,8 +49,16 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
     _nameController.dispose();
     _descController.dispose();
     _priceController.dispose();
-    _imageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _pickedImage = File(image.path);
+      });
+    }
   }
 
   void _save() {
@@ -61,10 +70,19 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
         return;
       }
 
+      if (_pickedImage == null &&
+          (widget.product == null || widget.product!.imageUrl.isEmpty)) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Please select an image')));
+        return;
+      }
+
       final name = _nameController.text;
       final desc = _descController.text;
       final price = double.tryParse(_priceController.text) ?? 0.0;
-      final image = _imageController.text;
+      // Use new image path if picked, otherwise keep existing
+      final image = _pickedImage?.path ?? widget.product?.imageUrl ?? '';
 
       if (widget.product != null) {
         // Update
@@ -106,6 +124,47 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              GestureDetector(
+                onTap: _pickImage,
+                child: Container(
+                  height: 200.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(color: Colors.grey[400]!),
+                  ),
+                  child: _pickedImage != null
+                      ? ClipRRect(
+                          borderRadius: BorderRadius.circular(12.r),
+                          child: Image.file(_pickedImage!, fit: BoxFit.cover),
+                        )
+                      : (widget.product != null &&
+                            widget.product!.imageUrl.isNotEmpty)
+                      ? ReusableImage(
+                          imageUrl: widget.product!.imageUrl,
+                          width: double.infinity,
+                          height: 200.h,
+                          borderRadius: 12.r,
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.add_a_photo,
+                              size: 40.r,
+                              color: Colors.grey[600],
+                            ),
+                            SizedBox(height: 8.h),
+                            Text(
+                              'Tap to add image',
+                              style: TextStyle(color: Colors.grey[600]),
+                            ),
+                          ],
+                        ),
+                ),
+              ),
+              SizedBox(height: 20.h),
               ReusableTextField(
                 controller: _nameController,
                 hint: 'Product Name',
@@ -130,11 +189,6 @@ class _AddEditProductViewState extends ConsumerState<AddEditProductView> {
                   if (double.tryParse(value) == null) return 'Invalid price';
                   return null;
                 },
-              ),
-              SizedBox(height: 12.h),
-              ReusableTextField(
-                controller: _imageController,
-                hint: 'Image URL',
               ),
               SizedBox(height: 12.h),
               DropdownButtonFormField<String>(

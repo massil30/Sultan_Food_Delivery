@@ -7,6 +7,7 @@ import 'package:sultan_admin/features/products/presentation/views/add_edit_produ
 import 'package:sultan_admin/features/products/presentation/views/product_details_view.dart';
 import 'package:sultan_admin/shared/components/app_bar.dart';
 import 'package:sultan_admin/shared/components/search_field.dart';
+import 'package:sultan_admin/shared/components/image.dart';
 import 'package:sultan_admin/utils/extensions/color_extension.dart';
 import 'package:sultan_admin/utils/extensions/text_extension.dart';
 
@@ -175,19 +176,11 @@ class _ProductCard extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
+              child: ReusableImage(
+                imageUrl: product.imageUrl,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(12.r),
-                  ),
-                  color: Colors.grey[200],
-                  image: DecorationImage(
-                    image: NetworkImage(product.imageUrl),
-                    fit: BoxFit.cover,
-                    onError: (_, __) {},
-                  ),
-                ),
+                height: double.infinity,
+                borderRadius: 12.r,
               ),
             ),
             Padding(
@@ -195,12 +188,6 @@ class _ProductCard extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product.name,
-                    style: context.h3,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
                   SizedBox(height: 4.h),
                   Text(
                     '\$${product.price}',
