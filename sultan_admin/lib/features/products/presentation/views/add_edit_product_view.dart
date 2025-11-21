@@ -9,6 +9,7 @@ import 'package:sultan_admin/shared/components/app_bar.dart';
 import 'package:sultan_admin/shared/components/button.dart';
 import 'package:sultan_admin/shared/components/image.dart';
 import 'package:sultan_admin/shared/components/text_field.dart';
+import 'package:sultan_admin/utils/extensions/color_extension.dart';
 import 'package:uuid/uuid.dart';
 
 class AddEditProductView extends ConsumerStatefulWidget {

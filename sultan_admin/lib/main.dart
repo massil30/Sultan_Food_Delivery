@@ -6,6 +6,7 @@ import 'package:sultan_admin/features/products/presentation/views/product_list_v
 import 'package:sultan_admin/shared/theme/dark_theme.dart';
 import 'package:sultan_admin/shared/theme/light_theme.dart';
 import 'package:sultan_admin/shared/theme/theme.dart';
+import 'package:sultan_admin/test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: "Theme Switch",
       theme: appLightTheme,
+      debugShowCheckedModeBanner: false,
       darkTheme: appDarkTheme,
       themeMode: themeMode,
       home: ProductListView(),

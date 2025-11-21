@@ -48,10 +48,11 @@ class ReusableTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fill = (fillColor ?? (enabled ? context.c_surface : context.c_disabled));
+    final fill =
+        (fillColor ?? (enabled ? context.c_surface : context.c_disabled));
     final bColor = borderColor ?? context.c_border;
-    final hColor = hintColor ?? context.c_secondary;
-    final tColor = textColor ?? context.c_primary;
+    final hColor = hintColor ?? context.c_textSecondary;
+    final tColor = textColor ?? context.c_textPrimary;
     final padding = contentPadding ?? context.psh16;
 
     return TextFormField(
@@ -81,15 +82,24 @@ class ReusableTextField extends StatelessWidget {
         ),
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius.r),
-          borderSide: BorderSide(color: bColor.withOpacity(0.6), width: borderWidth),
+          borderSide: BorderSide(
+            color: bColor.withOpacity(0.6),
+            width: borderWidth,
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius.r),
-          borderSide: BorderSide(color: context.c_primary, width: borderWidth + 0.5),
+          borderSide: BorderSide(
+            color: context.c_primary,
+            width: borderWidth + 0.5,
+          ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius.r),
-          borderSide: BorderSide(color: context.c_error, width: borderWidth + 0.5),
+          borderSide: BorderSide(
+            color: context.c_error,
+            width: borderWidth + 0.5,
+          ),
         ),
       ),
     );

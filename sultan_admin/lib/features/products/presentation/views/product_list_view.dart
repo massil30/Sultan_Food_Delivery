@@ -37,7 +37,7 @@ class _ProductListViewState extends ConsumerState<ProductListView> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Products',
-        backgroundcolor: context.c_background,
+        backgroundcolor: context.c_surface,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: context.c_primary,

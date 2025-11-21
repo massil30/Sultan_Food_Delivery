@@ -57,7 +57,14 @@ class ProductCard extends ConsumerWidget {
                   Text(
                     '\$${product.price}',
                     style: context.body?.copyWith(
-                      color: context.c_primary,
+                      color: context.c_textPrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    product.name,
+                    style: context.body?.copyWith(
+                      color: context.c_textPrimary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
